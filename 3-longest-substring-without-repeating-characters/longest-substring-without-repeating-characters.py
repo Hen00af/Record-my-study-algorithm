@@ -8,18 +8,15 @@ class Solution(object):
         ans = 0
         seen = {}
 
-        # s = "abcabcbb"
-        # 1.
-        # right = 0
-        # left = 0
-        # seen = {}
-        # char = `a`
+        # seen {
+        #   a : 1
+        #   b : 2
+        #   c : 3
+        # }
 
         for right, char in enumerate(s):
-            if char in seen and seen[char] >= left:
+            if char in seen and left <= seen[char]:
                 left = seen[char] + 1
-            # seen = { `a` : 0 }
             seen[char] = right
             ans = max(ans, right - left + 1)
-
         return ans
